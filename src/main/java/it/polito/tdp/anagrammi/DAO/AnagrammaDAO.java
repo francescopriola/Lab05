@@ -10,7 +10,7 @@ public class AnagrammaDAO {
 	public boolean isCorrect(String anagramma) {
 		final String sql = "SELECT nome FROM parola where nome = ?";
 
-		String nome = null;
+		boolean presente = false;
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
@@ -18,16 +18,13 @@ public class AnagrammaDAO {
 			ResultSet rs = st.executeQuery();
 
 			while (rs.next()) {
-				nome = rs.getString("nome");
+				presente = true;
 			}
 			rs.close();
 			st.close();
 			conn.close();
 			
-			if(nome == null)
-				return false;
-			else
-				return true;
+			return presente;
 			
 
 		} catch (SQLException e) {

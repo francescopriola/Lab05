@@ -1,7 +1,7 @@
 package it.polito.tdp.anagrammi;
 
 import java.net.URL;
-import java.util.List;
+import java.util.*;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.anagrammi.model.Anagramma;
@@ -45,7 +45,7 @@ public class FXMLController {
     		this.textCorretti.appendText("Inserisci una parola con non piu' di 7 caratteri.\n");
     		return;
     	}
-    	List<String> anagrammi = model.anagramma(s);
+    	Set<String> anagrammi = model.anagramma(s);
     	
     	for(String p : anagrammi) {
     		if(model.isCorrect(p))
